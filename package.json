@@ -1,0 +1,23 @@
+{
+  "name": "ant-plus-app",
+  "version": "1.0.0",
+  "description": "Investigation into creating a console application with ant-plus",
+  "main": "index.js",
+  "dependencies": {
+    "ant-plus": "0.0.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khanguslee/ant-plus-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khanguslee/ant-plus-app/issues"
+  },
+  "homepage": "https://github.com/khanguslee/ant-plus-app#readme"
+}
