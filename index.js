@@ -21,13 +21,11 @@ bicyclePowerSensor.on('powerData', data => {
         console.log(`Time since last packet: ${time_difference}, Average Time: ${average_time}`);
         previous_ms = current_ms;
     }
-    console.log(`ID: ${data.DeviceID}, Cadence: ${data.Cadence}, Power: ${data.Power}`);
-    console.log();
+    console.log(data.Power);
 });
 
 
 stick.on('startup', function () {
-    console.log('Starting up');
     // Connect to the first device found
 	bicyclePowerSensor.attach(0, 0);
 });
