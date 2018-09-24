@@ -1,0 +1,3 @@
+[submodule "MHP_Modelling"]
+	path = MHP_Modelling
+	url = https://github.com/Monash-Human-Power/MHP_Modelling.git
