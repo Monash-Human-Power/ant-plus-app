@@ -72,7 +72,7 @@ bicyclePowerSensor.on('powerData', data => {
     data_count += 1;
     var bicycle_power = data.Power;
     average_power_total += bicycle_power;
-
+    console.log(bicycle_power);
     if (is_initial) {
         is_initial = false;
         setInterval(calculate_estimated_speed_and_distance, 1000);

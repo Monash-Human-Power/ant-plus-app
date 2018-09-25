@@ -3,10 +3,18 @@
     <head>
         <title>MHP ant+ Web Application</title>
         <script src="/socket.io/socket.io.js"></script>
-        <script src="/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+        <h1>Monash Human Power</h1>
     </head>
 
     <body>
-        <h1>Monash Human Power</h1>
+        <div>
+            <canvas id="powerChart" width="400" height="400"></canvas>
+
+        </div>
+        <div>
+            <canvas id="speedDistanceChart" width="400" height="400"></canvas>
+        </div>
     </body>
+    <script src="/script.js"></script>
 </html>
