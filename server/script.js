@@ -3,7 +3,7 @@ var power_chart_element = document.getElementById("powerChart");
 var power_chart = new Chart(power_chart_element, {
     type: 'line',
     data: {
-        labels: ["Power"],
+        labels: ["Power (W)"],
         datasets: [{
             data: [],
             borderWidth: 1
@@ -28,17 +28,15 @@ var power_chart = new Chart(power_chart_element, {
         },
         legend: {
           display:false
-        },
-        responsive: true
-
+        }
     }
 });
 
 var speed_distance_chart_element = document.getElementById("speedDistanceChart");
-var speed_distance_chart = new Chart(power_chart_element, {
+var speed_distance_chart = new Chart(speed_distance_chart_element, {
     type: 'line',
     data: {
-        labels: ["Speed (m/s)"],
+        labels: ["Speed (km/h)"],
         datasets: [{
             data: [],
             borderWidth: 1
@@ -63,16 +61,14 @@ var speed_distance_chart = new Chart(power_chart_element, {
         },
         legend: {
           display:false
-        }, 
-        responsive: true
+        }
     }
 });
 
 socket.on('data', (data) => {
     console.log(data)
-    addData(power_chart, new Date(), data["power"]);
-    addData(speed_distance_chart, data["estimated_distance"], data["estimated_speed"]);
-
+    addData(power_chart, new Date().getMilliseconds(), data["power"]);
+    addData(speed_distance_chart, data["estimated_distance"].toFixed(2), data["estimated_speed"]*3.6);
 });
 
 function addData(chart, label, data) {

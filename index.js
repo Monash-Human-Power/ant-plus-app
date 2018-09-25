@@ -3,7 +3,8 @@ var path = require('path');
 
 /* SERVER */
 // Set up server to host web application
-var app = require('express')();
+var express = require('express');
+var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
@@ -14,6 +15,8 @@ app.get('/', (req, res) => {
 app.get('/script.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'server', 'script.js'));
 })
+
+app.use(express.static(path.join(__dirname, 'server')));
 
 server.listen(3000, () => {
     console.log("Web application running at http://localhost:3000");
