@@ -4,6 +4,16 @@ Repository on getting the Power 2 Max power meter connected to the ant+ garmin u
 # Getting Started
 Essentially follows the installation of the [ant-plus library](https://github.com/Loghorn/ant-plus) on javascript. However, the following are the steps that I took to get it working.
 
+Since we use submodules in this repository, cloning this repository is a bit different. If you clone this repository make sure to add the `--recursive` flag at the end.
+```
+git clone https://github.com/Monash-Human-Power/ant-plus-app.git --recursive
+```
+However, if you forgot to do this you can type the following
+```
+git submodule update --init
+```
+
+
 ## Windows
 ### Installation of ANT+ USB 
 1.  Download [Zadig](https://zadig.akeo.ie/) and install it
