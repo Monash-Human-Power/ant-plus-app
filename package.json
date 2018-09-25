@@ -1,12 +1,8 @@
 {
   "name": "ant-plus-app",
   "version": "1.0.0",
-  "description": "Investigation into creating a console application with ant-plus",
+  "description": "Repository on getting the Power 2 Max power meter connected to the ant+ garmin usb dongle and writing data to the command line.",
   "main": "index.js",
-  "dependencies": {
-    "ant-plus": "0.0.19"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/khanguslee/ant-plus-app/issues"
   },
-  "homepage": "https://github.com/khanguslee/ant-plus-app#readme"
+  "homepage": "https://github.com/khanguslee/ant-plus-app#readme",
+  "dependencies": {
+    "ant-plus": "0.0.19"
+  }
 }
