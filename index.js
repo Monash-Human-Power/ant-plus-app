@@ -1,6 +1,18 @@
 'use strict';
 var path = require('path');
 
+// Set up server to host web application
+var app = require('express')();
+var server = require('http').createServer(app);
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'server', 'index.html'));
+})
+
+server.listen(3000, () => {
+    console.log("Web application running at http://localhost:3000");
+})
+
 // Set up ant+ 
 let Ant = require('ant-plus');
 let stick = new Ant.GarminStick3();
