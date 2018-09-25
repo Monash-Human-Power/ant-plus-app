@@ -1,18 +1,25 @@
 'use strict';
 var path = require('path');
 
+/* SERVER */
 // Set up server to host web application
 var app = require('express')();
 var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'server', 'index.html'));
+})
+
+app.get('/script.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'server', 'script.js'));
 })
 
 server.listen(3000, () => {
     console.log("Web application running at http://localhost:3000");
 })
 
+/* ANT+ & MODELLING */
 // Set up ant+ 
 let Ant = require('ant-plus');
 let stick = new Ant.GarminStick3();
@@ -45,7 +52,14 @@ function calculate_estimated_speed_and_distance(){
         var script_output = JSON.parse(data);
         prev_estimated_speed = script_output["estimated_speed"];
         prev_estimated_distance = script_output["estimated_distance"];
+
         console.log("Power: " + average_power + " W\tEstimated Speed: " + prev_estimated_speed*3.6 + " kmh\t\tEstimated Distance: " +  prev_estimated_distance + " m");
+        var data = {
+            power: average_power,
+            estimated_speed: prev_estimated_speed,
+            estimated_distance: prev_estimated_distance
+        };
+        io.emit('data', data);
     });
 
     python_process.stderr.on('data', (data) => {
@@ -75,3 +89,8 @@ console.log('Opening ant+ USB...');
 if (!stick.open()) {
 	console.log('Stick not found!');
 }
+
+/* SOCKET.IO */
+io.on('connection', (socket) => {
+    console.log("Connected to webpage");
+});
