@@ -13,7 +13,6 @@ However, if you forgot to do this you can type the following
 git submodule update --init
 ```
 
-
 ## Windows
 ### Installation of ANT+ USB 
 1.  Download [Zadig](https://zadig.akeo.ie/) and install it
@@ -53,3 +52,5 @@ The console should output `/dev/ttyUSB0`
 
 7. Unplug the USB and run the script by typing `node index.js`
 
+## Running the Web Application
+Once you have installed the necessary libraries, on your browser go to `http://localhost:3000`. This should direct you to the dashboard where you should be able to see two graphs side-by-side.
