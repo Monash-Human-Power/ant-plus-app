@@ -29,7 +29,7 @@ let stick = new Ant.GarminStick3();
 let bicyclePowerSensor = new Ant.BicyclePowerSensor(stick);
 
 // Set up python shell
-var python_script_path = path.join(__dirname, "MHP_Modelling", "Python", "rider_sim_ford_ant_plus.py");
+var python_script_path = path.join(__dirname, "MHP_Modelling", "Python", "optimised_python", "rider_sim_ford_ant_plus.py");
 var spawn = require('child_process').spawn;
 
 var is_initial = true;
@@ -43,10 +43,13 @@ function calculate_estimated_speed_and_distance(){
     var average_power = average_power_total/data_count;
     data_count = 0;
     average_power_total = 0;
-    var output_arguments = [python_script_path, average_power];
+    var output_arguments = [python_script_path, "-input_power", average_power];
 
     if ((prev_estimated_speed != null) || (prev_estimated_distance != null)) {
+        output_arguments.push("--input_estimated_speed");
         output_arguments.push(prev_estimated_speed);
+
+        output_arguments.push("--input_estimated_distance");
         output_arguments.push(prev_estimated_distance);
     }
     var python_process = spawn('python', output_arguments);
