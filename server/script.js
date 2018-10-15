@@ -12,12 +12,12 @@ var power_chart = new Chart(power_chart_element, {
     options: {
         title: {
           display: true,
-          text: 'Power vs Time'
+          text: 'Power vs Estimated Distance'
         },
         scales: {
           xAxes: [{
             time: {
-              unit: 'seconds'
+              unit: 'Estimated Distance (m)'
             }
           }]
         },
@@ -45,12 +45,12 @@ var speed_distance_chart = new Chart(speed_distance_chart_element, {
     options: {
         title: {
           display: true,
-          text: 'Speed vs Distance'
+          text: 'Estimated Speed vs Estimated Distance'
         },
         scales: {
           xAxes: [{
             time: {
-              unit: 'Distance (m)'
+              unit: 'Estimated Distance (m)'
             }
           }]
         },
@@ -66,8 +66,8 @@ var speed_distance_chart = new Chart(speed_distance_chart_element, {
 });
 
 socket.on('data', (data) => {
-    console.log(data)
-    addData(power_chart, new Date().getMilliseconds(), data["power"]);
+    // Add incoming data to the appropriate graphs
+    addData(power_chart, data["estimated_distance"].toFixed(2), data["power"]);
     addData(speed_distance_chart, data["estimated_distance"].toFixed(2), data["estimated_speed"]*3.6);
 });
 
