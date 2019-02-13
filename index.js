@@ -29,7 +29,7 @@ let stick = new Ant.GarminStick3();
 let bicyclePowerSensor = new Ant.BicyclePowerSensor(stick);
 
 // Set up python shell
-var python_script_path = path.join(__dirname, "MHP_Modelling", "Python", "rider_sim_ford_ant_plus.py");
+var python_script_path = path.join(__dirname, "python_files",  "rider_sim_ford_ant_plus.py"); 
 var spawn = require('child_process').spawn;
 
 var is_initial = true;
