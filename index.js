@@ -49,7 +49,7 @@ function calculate_estimated_speed_and_distance(){
         output_arguments.push(prev_estimated_speed);
         output_arguments.push(prev_estimated_distance);
     }
-    var python_process = spawn('python', output_arguments);
+    var python_process = spawn('python3', output_arguments);
 
     python_process.stdout.on('data', (data) => {
         var script_output = JSON.parse(data);
